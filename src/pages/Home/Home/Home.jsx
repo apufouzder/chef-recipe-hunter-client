@@ -1,9 +1,10 @@
+import BannerSection from "../BannerSection/BannerSection";
 
 
 const Home = () => {
     return (
-        <div>
-            This is home
+        <div className="container mx-auto">
+            <BannerSection />
         </div>
     );
 };
