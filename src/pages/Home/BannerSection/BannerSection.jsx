@@ -12,22 +12,18 @@ const BannerSection = () => {
                     </div>
 
                     <div className="stats shadow">
-
                         <div className="stat place-items-center">
                             <div className="stat-value text-orange-400">301K</div>
                             <div className="stat-title">Recipe</div>
                         </div>
-
                         <div className="stat place-items-center">
                             <div className="stat-value text-orange-400">20K</div>
                             <div className="stat-title">User</div>
                         </div>
-
                         <div className="stat place-items-center">
                         <div className="stat-value text-orange-400">30+</div>
                             <div className="stat-title">Features</div>
                         </div>
-
                     </div>
 
                 </div>

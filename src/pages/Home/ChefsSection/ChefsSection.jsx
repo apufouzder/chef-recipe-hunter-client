@@ -14,7 +14,7 @@ const ChefsSection = () => {
     }, [])
     return (
         <div className="my-24">
-            <div className="text-center">
+            <div className="text-center mb-10">
                 <h1 className="text-5xl font-bold mb-4">Our Talented <span className="text-orange-500">Chefs</span></h1>
                 <p className="text-gray-700 text-lg">Meet our team of talented Bangladeshi chefs who are passionate about creating delicious and authentic dishes. <br /> Get ready to indulge in a culinary journey through the rich and diverse tastes of Bangladesh!</p>
             </div>
