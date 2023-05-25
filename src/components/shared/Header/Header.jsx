@@ -28,7 +28,9 @@ const Header = () => {
                 </div>
 
                 <div className="navbar-end">
-                    {/* <a className="btn">Login</a> */}
+                    <Link to="/login">
+                        <button className="btn text-xl capitalize bg-orange-500 border-0 hover:bg-orange-400">Login</button>
+                    </Link>
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             <img src="https://cdn.pixabay.com/photo/2021/04/07/17/01/woman-6159648_960_720.jpg" />
