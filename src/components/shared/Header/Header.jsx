@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ActiveLink from "../../ActiveLink/ActiveLink";
 
 
 const Header = () => {
@@ -21,9 +22,9 @@ const Header = () => {
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal gap-6 px-1">
-                        <Link to="/">Home</Link>
-                        <Link to="/blogs">Blogs</Link>
+                    <ul className="menu text-lg menu-horizontal gap-6 px-1">
+                        <ActiveLink to="/">Home</ActiveLink>
+                        <ActiveLink to="/blogs">Blogs</ActiveLink>
                     </ul>
                 </div>
 
