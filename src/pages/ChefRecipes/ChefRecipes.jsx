@@ -1,11 +1,19 @@
 import { useLoaderData } from "react-router-dom";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
-
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChefRecipes = () => {
     const chef = useLoaderData();
-    // const { chefName, chefPicture, bio, likes, numberOfRecipes, yearsOfExperience } = chefRecipes;
+    const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+
+    const handleFavoriteClick = (recipeName) => {
+        setFavoriteRecipes((prevFavorites) => [...prevFavorites, recipeName]);
+        toast.success(`${recipeName} is added to your favorites!`)
+    };
+
     return (
         <div>
             <div className="bg-gray-200 py-10">
@@ -59,8 +67,12 @@ const ChefRecipes = () => {
                                         <Rating style={{ maxWidth: 100 }} value={recipe.rating} readOnly />
                                         <span>{recipe.rating}</span>
                                     </div>
-                                    <button className="ml-auto bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded focus:outline-none">
-                                        Favorite
+                                    <button className={`ml-auto bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded focus:outline-none ${favoriteRecipes.includes(recipe.recipeName) ? 'cursor-not-allowed opacity-50' : ''
+                                            }`}
+                                        onClick={() => handleFavoriteClick(recipe.recipeName)}
+                                        disabled={favoriteRecipes.includes(recipe.recipeName)}
+                                    >
+                                        {favoriteRecipes.includes(recipe.recipeName) ? 'Favorite' : 'Add to Favorites'}
                                     </button>
                                 </div>
                             </div>
@@ -68,6 +80,7 @@ const ChefRecipes = () => {
                     ))}
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
