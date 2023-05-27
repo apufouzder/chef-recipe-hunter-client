@@ -2,10 +2,11 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+    const [error, setError] = useState('');
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,7 +17,7 @@ const Login = () => {
             .then(() => {
                 navigate(from, { replace: true })
             }).catch((error) => {
-                console.log(error);
+                setError(error.message);
             });
     }
 
@@ -27,7 +28,7 @@ const Login = () => {
                 console.log(user);
                 navigate(from, { replace: true })
             }).catch((error) => {
-                console.log(error);
+                setError(error.message);
             });
     }
 
@@ -44,7 +45,7 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error.message);
+                setError(error.message);
             })
     }
 
@@ -70,6 +71,9 @@ const Login = () => {
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
+                        </div>
+                        <div className='mb-4'>
+                            <span className='text-red-500'>{ error}</span>
                         </div>
                         <div className='text-center'>
                             <button type='submit' className="btn text-xl capitalize btn-warning">Login</button>

@@ -2,10 +2,11 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Registration = () => {
+    const [error, setError] = useState('');
     const { createUser, updateUserNameAndPhoto, githubSignIn, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,7 +17,7 @@ const Registration = () => {
             .then(() => {
                 navigate(from, { replace: true })
             }).catch((error) => {
-                console.log(error);
+                setError(error.message);
             });
     }
 
@@ -27,7 +28,7 @@ const Registration = () => {
                 console.log(user);
                 navigate(from, { replace: true })
             }).catch((error) => {
-                console.log(error);
+                setError(error.message);
             });
     }
 
@@ -39,24 +40,29 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, photo, email, password)
+        if (password.length < 6) {
+            setError('The password is less than 6 characters')
+            return;
+        }
+
         createUser(email, password)
             .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
+                console.log(result.user);
                 updateUserNameAndPhoto(result.user, name, photo)
-                    .then(() => { 
+                    .then(() => {
                         console.log('update user');
                     })
-                    .catch(err => { 
-                        console.log(err.message);
+                    .catch(err => {
+                        setError(err.message);
                     })
+
             })
             .catch(error => {
-                console.log(error.message);
+                setError(error.message);
             })
-            
+        navigate(from, { replace: true })
     }
+
     return (
         <div className="my-10">
             <div className="card mx-auto flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
@@ -68,28 +74,32 @@ const Registration = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered" />
+                            <input type="text" name="name" placeholder="name" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control mb-4">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photo" placeholder="photo url" className="input input-bordered" />
+                            <input type="text" name="photo" placeholder="photo url" className="input input-bordered" required />
+                        </div>
+
+                        <div className='mb-4'>
+                            <span className='text-red-500'>{error}</span>
                         </div>
 
                         <div className='text-center'>
