@@ -8,6 +8,7 @@ import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
 import ChefRecipes from "../../pages/ChefRecipes/ChefRecipes";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import NotFound from "../../components/NotFound/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Registration />
+            },
+            {
+                path: "*",
+                element: <NotFound />
             }
         ]
     },

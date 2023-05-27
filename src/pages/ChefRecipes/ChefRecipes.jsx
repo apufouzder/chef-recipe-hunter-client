@@ -19,7 +19,7 @@ const ChefRecipes = () => {
             <div className="bg-gray-200 py-10">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-center">
-                        <img src={chef.chefPicture} alt={chef.chefName} className="h-24 w-24 rounded-full" />
+                        <img src={chef.chefPicture} alt={chef.chefName} className="h-52 w-52 rounded-full" />
                     </div>
                     <h2 className="mt-4 text-3xl leading-9 font-extrabold text-gray-900 text-center">{chef.chefName}</h2>
                     <p className="mt-2 text-lg text-gray-600 text-center">{chef.bio}</p>
@@ -50,7 +50,7 @@ const ChefRecipes = () => {
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
                 <h2 className="text-2xl leading-8 font-bold tracking-tight text-gray-900">Recipes</h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 my-8">
-                    {chef.recipes.map((recipe, index) => (
+                    {chef.recipes?.map((recipe, index) => (
                         <div key={index} className="bg-white rounded-lg shadow">
                             <div className="p-6">
                                 <h3 className="text-xl leading-6 font-medium text-gray-900">{recipe.recipeName}</h3>
