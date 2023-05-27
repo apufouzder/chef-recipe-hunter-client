@@ -42,7 +42,7 @@ const Header = () => {
                     {
                         user ?
                             <>
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom capitalize" data-tip={`${!user.displayName === null ? user.displayName : "Name not available"}`}>
                                     <div className="w-10 rounded-full">
                                         <img src={user.photoURL} alt="profile" />
                                     </div>
