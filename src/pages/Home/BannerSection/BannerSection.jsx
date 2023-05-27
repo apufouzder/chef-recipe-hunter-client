@@ -8,7 +8,7 @@ const BannerSection = () => {
                     <h1 className="text-5xl text-gray-700 leading-tight font-bold">Your EveryDay <br /> Cooking <span className="text-orange-400">Inspiration🍕</span></h1>
                     <p className="py-6 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias culpa reprehenderit <br /> provident explicabo dolores eveniet eaque voluptas obcaecati saepe quas?</p>
                     <div className="mb-8">
-                        <button className="btn border-0 bg-orange-500">Get Started</button>
+                        <button className="btn border-0 btn-warning">Get Started</button>
                     </div>
 
                     <div className="stats shadow">

@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: "chefs/:chefId",
                 element: <PrivateRoute><ChefRecipes /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.chefId}`)
+                loader: ({params}) => fetch(`https://tasty-chef-server.vercel.app/chefs/${params.chefId}`)
             },
             {
                 path: "blogs",

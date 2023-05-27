@@ -28,7 +28,7 @@ const Header = () => {
                         </ul>
                     </div>
 
-                    <Link to="/" className="btn btn-ghost normal-case text-xl">TastyChef.</Link>
+                    <Link to="/" className="btn btn-ghost normal-case font-bold text-xl">Tasty<span className="text-orange-400">Chef</span></Link>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
@@ -48,11 +48,11 @@ const Header = () => {
                                     </div>
                                 </label>
 
-                                <button onClick={handleLogOut} className="btn text-xl capitalize bg-orange-500 border-0 hover:bg-orange-400">Log Out</button>
+                                <button onClick={handleLogOut} className="btn text-xl capitalize btn-warning border-0 hover:bg-orange-400">Log Out</button>
                             </>
                             :
                             <Link to="/login">
-                                <button className="btn text-xl capitalize bg-orange-500 border-0 hover:bg-orange-400">Login</button>
+                                <button className="btn text-xl capitalize btn-warning border-0 hover:bg-orange-400">Login</button>
                             </Link>
                     }
                 </div>

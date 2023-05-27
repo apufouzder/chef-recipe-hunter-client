@@ -34,7 +34,7 @@ const Chef = ({ chef }) => {
                 </div>
 
                 <div className="card-actions">
-                    <button className="btn btn-primary">
+                    <button className="btn btn-warning">
                         <Link to={`chefs/${id}`}>View Recipes</Link>
                     </button>
                 </div>
