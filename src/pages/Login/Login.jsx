@@ -6,10 +6,30 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/';
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+                navigate(from, { replace: true })
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
 
     const handleLogin = event => {
         event.preventDefault();
@@ -59,10 +79,10 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <div className='flex justify-between'>
-                        <button className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
+                        <button onClick={handleGoogleSignIn} className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
                             <FcGoogle className='mr-1 text-2xl' />
                             With Google</button>
-                        <button className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
+                        <button onClick={handleGithubSignIn} className="btn capitalize border-gray-400 btn-outline hover:bg-transparent hover:text-inherit btn-ghost">
                             <FaGithub className='mr-1 text-2xl' />
                             With Github</button>
                     </div>
